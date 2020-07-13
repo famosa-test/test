@@ -1,0 +1,16 @@
+
+<table border="1" style="width:98%;">
+	<tr>
+		<td colspan="2">
+			[<a ng-click="seeAllConstraints()">reset filter</a> ]
+		</td>
+	</tr>
+	<tr ng-repeat="c in constraints">
+		<td style="width:40px;">
+			{{ c.id }}
+		</td>
+		<td>
+			{{ c.text }}
+		</td>
+	</tr>
+</table>	

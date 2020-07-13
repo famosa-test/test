@@ -1,0 +1,100 @@
+<div id="{{ feature.id }}" class="col-sm-12">
+
+ 	<div id="{{ feature.id }}_main">
+ 	 	
+ 		<!-- Root -->
+ 		<span ng-if="feature.type == 'RootFeature'">
+ 			<h1>{{feature.name}}</h1>
+ 		</span>
+ 		
+ 		<!-- Mandatory -- Solitaire -->
+ 		<span ng-if="feature.type == 'SolitaireFeature' && feature.mandatory == true">
+ 			<span ng-if="feature.state == 0" >
+ 				{{ feature.name }}
+ 			</span> 		
+ 			<span ng-if="(feature.state == 1 || feature.state == 2)"  
+ 				class="selectedFeature">
+ 				{{ feature.name }}
+ 			</span> 		
+ 			<span ng-if="(feature.state == 3 || feature.state == 4)"  
+ 				class="deselectedFeature">
+ 				{{ feature.name }}
+ 			</span> 		
+ 		</span>
+ 		
+ 		<!-- Non Mandatory -- Solitaire -->
+ 		<span ng-if="feature.type == 'SolitaireFeature' && feature.mandatory == false">
+ 			<span ng-if="feature.state == 0" 
+ 				ng-click="select()">
+ 				<i class="fa fa-square-o"></i> &nbsp;{{ feature.name }}
+ 			</span>
+ 			<span ng-if="(feature.state == 1 || feature.state == 2)"
+ 				ng-click="undo()"  
+ 				class="selectedFeature">
+ 				<i class="fa fa-check-square-o"></i> &nbsp;{{ feature.name }}
+ 			</span> 		
+ 			<span ng-if="(feature.state == 3 || feature.state == 4)">
+ 				<i class="fa fa-square-o"></i> &nbsp;<span class="deselectedFeature">{{ feature.name }}</span>
+ 			</span>
+			<img ng-if="feature.state == 1 || feature.state == 3"
+	 			ng-click="undo()"
+	 			src="images/undo.gif" /> 		
+ 		</span>
+		
+ 		<span ng-if="feature.type == 'GroupedFeature' && widget=='check'">
+ 			<span ng-if="feature.state == 0" 
+ 				ng-click="select()">
+ 				<i class="fa fa-square-o"></i> &nbsp;{{ feature.name }}
+ 			</span>
+ 			<span ng-if="(feature.state == 1 || feature.state == 2)"
+ 				ng-click="undo()"  
+ 				class="selectedFeature">
+ 				<i class="fa fa-check-square-o"></i> &nbsp;{{ feature.name }}
+ 			</span> 		
+ 			<span ng-if="(feature.state == 3 || feature.state == 4)" >
+ 				<i class="fa fa-square-o"></i> &nbsp;<span class="deselectedFeature">{{ feature.name }}</span>
+ 			</span>
+			<img ng-if="feature.state == 1 || feature.state == 3"
+	 			ng-click="undo()"
+	 			src="images/undo.gif" />  
+ 		</span> 
+ 
+ 		<span ng-if="feature.type == 'GroupedFeature' && widget=='radio'">
+ 			<span ng-if="feature.state == 0" 
+ 				ng-click="select()">
+ 				<i class="fa fa-circle-o"></i> &nbsp;{{ feature.name }}
+ 			</span>
+ 			<span ng-if="(feature.state == 1 || feature.state == 2)"
+ 				ng-click="undo()"  
+ 				class="selectedFeature">
+ 				<i class="fa fa-dot-circle-o"></i> &nbsp;{{ feature.name }}
+ 			</span> 		
+ 			<span ng-if="(feature.state == 3 || feature.state == 4)">
+ 				<i class="fa fa-circle-o"></i> &nbsp;<span class="deselectedFeature">{{ feature.name }}</span>
+ 			</span>
+			<img ng-if="feature.state == 1 || feature.state == 3"
+	 			ng-click="undo()"
+	 			src="images/undo.gif" /> 	
+ 		</span> 
+ 		
+  	</div>
+
+ 	<div id="{{ feature.id }}_children">
+		<span ng-if="feature.type == 'FeatureGroup' && feature.max == -1">
+			<div ng-repeat="child in feature.children">     
+				<fm-form-field feature="child" widget="'check'">
+			</div>
+		</span>
+ 	 	<span ng-if="feature.type == 'FeatureGroup' && feature.max != -1">
+			<div ng-repeat="child in feature.children">     
+				<fm-form-field feature="child" widget="'radio'">
+			</div>
+		</span>
+ 	 	<span ng-if="feature.type != 'FeatureGroup'">
+			<div ng-repeat="child in feature.children">     
+				<fm-form-field feature="child">
+			</div>
+		</span>
+ 	</div>
+
+</div>

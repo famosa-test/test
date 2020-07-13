@@ -1,0 +1,34 @@
+<!-- Login -->
+<div class="container">
+    <div class="row">
+		<div class="col-xs-8 col-xs-offset-2 col-md-4 col-md-offset-4 login">
+    		<div class="panel panel-default">
+			  	<div class="panel-heading">
+			    	<h3 class="panel-title">Please sign in</h3>
+			 	</div>
+			  	<div class="panel-body">
+			    	<form accept-charset="UTF-8" role="form">
+                    <fieldset>
+			    	  	<div class="form-group">
+			    		    <input class="form-control" placeholder="E-mail" name="email" type="text" ng-model="login">
+			    		</div>
+			    		<div class="form-group">
+			    			<input class="form-control" placeholder="Password" name="password" type="password" ng-model="password">
+			    		</div>
+			    		<div class="checkbox">
+			    	    	<label>
+			    	    		<input name="remember" type="checkbox" value="Remember Me" ng-model="remember"> Remember Me
+			    	    	</label>
+			    	    </div>
+			    		<input class="btn btn-md btn-info btn-block" type="button" value="Login" ng-click="doLogin()">
+			    	</fieldset>
+			      	</form>
+			      	<br/>
+					<div class="well well-sm" ng-show="message">
+						{{message}}
+					</div>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

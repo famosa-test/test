@@ -1,0 +1,37 @@
+<div us-spinner="{radius:30, width:8, length: 16}"
+	style="position:absolute; top:50%; left: 50%; z-index: 999999;">
+</div>
+
+<div ui-layout style="margin-top:45px;">
+	
+<div ui-layout="{flow : 'column'}" >
+<div class="tree" >
+
+	<fm-tree-viewer model="model" >
+	
+</div>
+
+<div ui-layout="{flow : 'row'}" >            
+<div class="decisions" >
+<div style="margin-top:5px; margin-left:15px;">
+
+	<div style="margin-bottom:5px;">
+		<button class="btn btn-info btn-xs" ng-click="goHome()"><i class="glyphicon glyphicon-home"></i> Home</button>
+	</div>
+	<config-steps-viewer model="model" >
+	
+</div>
+</div>
+
+<div class="constraints" >
+<div style="margin-top:15px;margin-left:15px;">	
+
+	<fm-constraints-viewer constraints="constraints" >
+
+</div>
+</div>
+		
+</div> <!-- /flow:row -->
+</div> <!-- /flow:column -->
+	
+</div> <!-- /ui-layout -->

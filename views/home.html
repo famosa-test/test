@@ -1,0 +1,30 @@
+<!-- Home -->
+<div class="container theme-showcase" role="main">
+	 
+</div> <!-- /container -->
+
+<!-- List of Models -->
+<div class="container" ng-controller="HomeController">
+
+<table class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Model</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="model in models">
+      <td>{{model.categoryName }}</td>
+      <td>{{model.name}}</td>
+      <td>
+      	<button class="btn btn-info btn-xs" ng-click="view(model)">View</button>
+      	<button class="btn btn-info btn-xs" ng-click="configure(model)">Configure</button>
+      	<button class="btn btn-info btn-xs" ng-click="configureWithForm(model)">Form</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+</div>

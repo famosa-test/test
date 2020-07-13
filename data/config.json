@@ -1,0 +1,20 @@
+{
+	"title" : "Configurador basado en Modelos de Features",
+	"users" : [
+			{
+				"login" : "root",
+				"password" : "admin!2015"
+			},
+			{
+				"login" : "user1",
+				"password" : "user!1"
+			},
+			{
+				"login" : "user2",
+				"password" : "user!2"
+			}	
+		],
+	"url"	: {
+			"prefix" : ""
+		}
+}

@@ -1,0 +1,59 @@
+<div id="{{ feature.id }}">
+
+ 	<div id="{{ feature.id }}_main">
+ 	
+		<img src="images/blank.gif" >  
+ 	
+  		<!-- expand -->
+        <img ng-if="feature.children.length > 0 && feature.closed == true" id="{{ feature.id }}_icon" src="images/plus.jpg"  ng-click="expandCollapse()" >
+        <img ng-if="feature.children.length > 0 && feature.closed != true" id="{{ feature.id }}_icon" src="images/minus.jpg"  ng-click="expandCollapse()" >
+      	<img ng-if="feature.children.length == 0" id="{{ feature.id }}_icon" src="images/blank.gif" >
+      	 
+ 		<!-- type = root.gif, optional.gif, mandatory.gif, group.gif, grouped.gif -->
+ 		<img ng-if="feature.type == 'RootFeature'" id="{{ feature.id }}_type" src="images/root.gif" alt="root">
+ 		<img ng-if="feature.type == 'SolitaireFeature' && feature.mandatory == true" id="{{ feature.id }}_type" src="images/mandatory.gif" alt="mandatory">
+ 		<img ng-if="feature.type == 'SolitaireFeature' && feature.mandatory == false" id="{{ feature.id }}_type" src="images/optional.gif" alt="optional">
+ 		<img ng-if="feature.type == 'FeatureGroup'" id="{{ feature.id }}_type" src="images/group.gif" alt="group">
+ 		<img ng-if="feature.type == 'GroupedFeature'" id="{{ feature.id }}_type" src="images/grouped.gif" alt="grouped">
+ 
+ 		<!-- name -->
+ 		<!-- if group -->
+ 
+ 			<!-- groupType = 1..1 / 1..* -->
+ 			<span ng-if="feature.type == 'FeatureGroup'"  title="{{ feature.min }}..{{ feature.max}}" id="{{ feature.id }}_name" >
+ 				[{{ feature.min }}..{{ feature.max }}]
+ 			</span>
+ 
+ 		<!-- else -->
+ 
+ 			<!-- state2 = normalFeature / selectedFeature / deselectedFeature -->
+ 			<span ng-if="feature.type != 'FeatureGroup' && feature.state == 0" title="{{ feature.id }}" 
+ 				class="normalFeature" 
+ 				id="{{ feature.id }}_name"
+ 				ng-click="filterConstraints()">
+ 				{{ feature.name }}
+ 			</span>
+ 			<span ng-if="feature.type != 'FeatureGroup' && (feature.state == 1 || feature.state == 2)" title="{{ feature.id }}" 
+ 				class="selectedFeature" 
+ 				id="{{ feature.id }}_name"
+ 				ng-click="filterConstraints()">
+ 				{{ feature.name }}
+ 			</span>
+ 			<span ng-if="feature.type != 'FeatureGroup' && (feature.state == 3 || feature.state == 4)" title="{{ feature.id }}" 
+ 				class="deselectedFeature" 
+ 				id="{{ feature.id }}_name"
+ 				ng-click="filterConstraints()">
+ 				{{ feature.name }}
+ 			</span>
+ 		<!-- end if -->
+  		<!-- end name -->
+
+  	</div>
+ 	<div id="{{ feature.id }}_children" 
+		ng-show="feature.closed != true"
+ 		style="position:relative; left:20px;">
+		<div ng-repeat="child in feature.children">     
+			<fm-node feature="child">
+		</div>
+ 	</div>
+</div>

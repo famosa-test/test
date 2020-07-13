@@ -1,0 +1,39 @@
+<table class="standardTableStyle" id="confStepsTable" style="width:98%;" border="1">
+	<tr>
+		<td colspan="2" class="standardHighlight1">
+		<b>Configuration Steps</b>
+		[<a ng-click="reset()">reset</a> ]
+		[<a ng-click="undoLast()">Undo Last</a> ]		
+	</td>
+</tr>
+<tr>
+	<th>Step</th>
+	<th>Decision</th>
+</tr>
+
+<tr ng-repeat="step in model.steps">
+	<td>
+		{{ step.id }}
+		<img ng-if="step.type != 'RootDecision'" ng-click="undo( step.decision.feature.id )" src="images/undo.gif">
+	</td>
+	<td>
+		<img ng-if="step.type == 'RootDecision'"    src="images/propagated.gif">
+		<img ng-if="step.type == 'UserSelection'"   src="images/checkmark.gif">
+		<img ng-if="step.type == 'UserDeselection'" src="images/crossmark.gif">
+		<img ng-if="step.type == 'AutoCompletion'"  src="images/auto-completion.gif">
+		{{ step.decision.feature.name }}
+	</td>
+</tr>
+
+<tr>
+	<td colspan="2">
+		<b ng-if="model.complete == true">Done !!</b>
+		<span ng-if="model.complete != true">
+			<img src="images/auto-completion.gif"> Auto-completion: 
+			<a ng-click="complete()">Less Features</a>
+			| <a ng-click="complete()">More Features</a>
+		</span>
+	</td>
+</tr>
+
+</table>
