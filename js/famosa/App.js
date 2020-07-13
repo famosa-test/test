@@ -45,3 +45,8 @@ app.config(['$routeProvider', function ($routeProvider) {
     });
 
 }]);
+
+// configure http communications
+app.config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.defaults.withCredentials = true;
+}]);
