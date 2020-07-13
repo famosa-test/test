@@ -2,8 +2,8 @@
 // Provides access to SPLOT functionality a the back-end
 angular.module("famosa")
 	.factory("splotService", [
-	    '$http', '$rootScope', '$timeout', '$q', 
-	    function($http, $rootScope, $timeout, $q) { 
+	    'splotConfigService', '$http', '$rootScope', '$timeout', '$q', 
+	    function(splotConfigService, $http, $rootScope, $timeout, $q) { 
 	                        	 
 	return {
 
@@ -28,9 +28,7 @@ angular.module("famosa")
 			    "constraints" : []
 
 		},
-		
-		serverUrl: "",
-		
+			
 		constraints : [],
 		
 		// Repository
@@ -46,7 +44,7 @@ angular.module("famosa")
 				console.log( "invoking service" );
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/repository/models'
+					url : splotConfigService.serverUrl + '/famosa.server/repository/models'
 				}).then(function(response) {
 					
 					// ok
@@ -77,7 +75,7 @@ angular.module("famosa")
 				console.log( "invoking service" );
 				$http({
 					method : 'GET',
-					url : encodeURI(serverUrl 
+					url : encodeURI(splotConfigService.serverUrl 
 						+ '/famosa.server/repository/model/'						
 						+ modelToLoad.uuid
 						)
@@ -116,7 +114,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/json.fm.egl'
+					url : splotConfigService.serverUrl + '/famosa.server/splot/json.fm.egl'
 				}).then(function(response) {
 					
 					// ok
@@ -146,7 +144,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/select.egl?id=' + featureId
+					url : splotConfigService.serverUrl + '/famosa.server/splot/select.egl?id=' + featureId
 				}).then(function(response) {
 					
 					// ok
@@ -175,7 +173,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/deselect.egl?id=' + featureId
+					url : splotConfigService.serverUrl + '/famosa.server/splot/deselect.egl?id=' + featureId
 				}).then(function(response) {
 					
 					// ok
@@ -204,7 +202,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/undo.egl?id=' + featureId
+					url : splotConfigService.serverUrl + '/famosa.server/splot/undo.egl?id=' + featureId
 				}).then(function(response) {
 					
 					// ok
@@ -233,7 +231,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/change-decision.egl?id=' + featureId
+					url : splotConfigService.serverUrl + '/famosa.server/splot/change-decision.egl?id=' + featureId
 				}).then(function(response) {
 					
 					// ok
@@ -262,7 +260,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/complete.egl'
+					url : splotConfigService.serverUrl + '/famosa.server/splot/complete.egl'
 				}).then(function(response) {
 					
 					// ok
@@ -292,7 +290,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/reset.egl'
+					url : splotConfigService.serverUrl + '/famosa.server/splot/reset.egl'
 				}).then(function(response) {
 					
 					// ok
@@ -322,7 +320,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/undo-last.egl'
+					url : splotConfigService.serverUrl + '/famosa.server/splot/undo-last.egl'
 				}).then(function(response) {
 					
 					// ok
@@ -352,7 +350,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/json.constraints.egl'
+					url : splotConfigService.serverUrl + '/famosa.server/splot/json.constraints.egl'
 				}).then(function(response) {
 					
 					// ok
@@ -382,7 +380,7 @@ angular.module("famosa")
 
 				$http({
 					method : 'GET',
-					url : serverUrl + '/famosa.server/splot/json.constraints.egl?id=' + featureId
+					url : splotConfigService.serverUrl + '/famosa.server/splot/json.constraints.egl?id=' + featureId
 				}).then(function(response) {
 					
 					// ok
